@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>链表反转</title>
+  <script src="./2.顺序插入.js"></script>
+  <script src="./4.链表反转.js"></script>
+</head>
+<body>
+  
+</body>
+<script>
+  const linked = new Linked()
+  const node1 = new Node({ no: 1, name: '林冲' })
+  const node2 = new Node({ no: 2, name: '吴用' })
+  const node3 = new Node({ no: 3, name: '宋江' })
+  const node4 = new Node({ no: 4, name: '李逵' })
+
+  linked.add(node1)
+  linked.add(node4)
+  linked.add(node2)
+  linked.add(node3)
+  
+  linked.view()
+  
+  const reverse = reverseLinked(linked.getHead())
+  console.log(reverse);
+</script>
+</html>
