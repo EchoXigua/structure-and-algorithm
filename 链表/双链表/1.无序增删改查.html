@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>双向链表-无序</title>
+  <script src="./1.无序增删改查.js"></script>
+</head>
+
+<body>
+
+</body>
+<script>
+  const doubleLinkedList = new DoubleLinkedList()
+  const doubleNode1 = new DoubleNode({ no: 1, name: '亚索' })
+  const doubleNode2 = new DoubleNode({ no: 2, name: '盲僧' })
+  const doubleNode3 = new DoubleNode({ no: 3, name: '墨菲特' })
+  const doubleNode4 = new DoubleNode({ no: 4, name: '永恩' })
+
+  doubleLinkedList.add(doubleNode1)
+  doubleLinkedList.add(doubleNode4)
+  doubleLinkedList.add(doubleNode2)
+  doubleLinkedList.add(doubleNode3)
+  console.log('操作前');
+  doubleLinkedList.view()
+
+
+  doubleLinkedList.edit({ no: 2, name: '卡莎' })
+
+  doubleLinkedList.edit({ no: 5, name: '卡莎' })
+
+
+  doubleLinkedList.del({ no: 3 })
+
+  console.log('操作后');
+  doubleLinkedList.view()
+
+
+</script>
+
+</html>
