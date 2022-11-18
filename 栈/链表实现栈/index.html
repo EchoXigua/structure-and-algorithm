@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>链表实现栈</title>
+  <script src="./index.js"></script>
+</head>
+
+<body>
+  <input id="ipt" /> &nbsp;
+  <button onclick="add()">添加</button> &nbsp;
+  <button onclick="del()">删除</button> &nbsp;
+  <button onclick="view()">查看栈</button> &nbsp;
+</body>
+
+<script>
+  const ipt = document.querySelector('#ipt')
+  const stack = new LinkedStack(5)
+  function add() {
+    stack.push(ipt.value)
+    ipt.value = ''
+    stack.view()
+  }
+  function del() {
+    stack.pop()
+    stack.view()
+  }
+  function view() {
+    stack.view()
+  }
+
+</script>
+
+</html>
