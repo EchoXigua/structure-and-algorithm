@@ -10,7 +10,23 @@
 </head>
 
 <body>
-
+  <input id="ipt" /> &nbsp;
+  <button onclick="cal()">计算</button> &nbsp;
+  <div id="res"></div>
 </body>
+
+<script>
+  const ipt = document.querySelector('#ipt')
+  const res = document.querySelector('#res')
+
+  const calculator = new Calculator()
+
+  function cal() {
+    console.log('str', ipt.value);
+    res.innerHTML = '结果为：'
+    res.innerHTML += calculator.calculate(ipt.value)
+  }
+
+</script>
 
 </html>
