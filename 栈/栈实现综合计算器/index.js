@@ -51,34 +51,18 @@ class Calculator {
       } else {
         //数字往符号栈里面存入，但是要注意多位数
 
+        keepCh += char
         //最后一位直接加入
-        // if (i == str.length - 1) {
-        //   this.numStack.push(Number(char))
-        //   return
-        // }
+        if (i == str.length - 1) {
+          this.numStack.push(Number(keepCh))
+        } else {
+          //下一位是符号的话
+          if (this.isOper(str[i + 1])) {
+            this.numStack.push(Number(keepCh))
+            keepCh = ''
+          }
+        }
 
-        // let j = i
-        // while (true) {
-        //   console.log(j);
-        //   console.log(str[j]);
-        //   console.log(this.isOper(str[j]));
-        //   if (this.isOper(str[j])) {
-        //     //符号
-        //     break
-        //   } else {
-        //     if (j < str.length) {
-        //       j++
-        //       keepCh += str[j]
-
-        //     } else {
-        //       break
-        //     }
-        //   }
-
-        // }
-        //退出循坏代表碰到了符号
-        this.numStack.push(Number(char))
-        keepCh = ''
       }
 
     }
@@ -169,6 +153,7 @@ class ArrayStack {
       return
     }
     const value = this.arr[this.headNo]
+    this.arr[this.headNo] = null
     this.headNo--
     return value
   }
