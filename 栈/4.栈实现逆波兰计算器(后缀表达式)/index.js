@@ -8,8 +8,10 @@ class ReversePoland {
   }
   //实现思路还是跟综合计算器几乎一样 这里还未考虑小括号
   //在中缀转后缀会实现
-  cal(str) {
-    const arr = str.split(' ')
+  cal(str, isHandle = true) {
+    let arr = []
+    if (isHandle) arr = str.split(' ')
+    arr = str
     console.log(arr);
     for (let i = 0; i < arr.length; i++) {
       let char = arr[i]
