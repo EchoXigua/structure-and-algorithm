@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+  /**
+   * 迷宫问题
+   * param: map: 地图
+   * param: i,j 哪个位置开始出发
+   * return 找到通路 返回true 否则 false
+   *  约定：0为未走过的路， 1为墙，2为可以走的路，3为走过的路，但是路不通 
+   *  小球移动规则：下->右->上->左  如果该点走不通，则回溯  
+   *  出口在 map[6][5]
+  */
+  function recursion(map, i, j) {
+    if (map[6][5] == 2) {
+      //出口在 6 5 为2的话代表已经走到了出口位置
+      return true
+    } else {
+      //还没有走到出口 继续走
+      if (map[i][j] == 0) {
+        //当前位置为0 才可以走 
+        map[i][j] = 2 //把当前位置改为2  相当于走到当前位置
+
+        //然后继续
+        if (recursion(map, i + 1, j)) { //先向下走
+          //这里调用recursion 走，如果返回true 代表走完，
+          return true
+          //为什么要返回true？ return 之后才能打断这一次的函数调用，递归调用了很多函数
+          //而上一个函数依赖这个函数的结果
+        } else if (recursion(map, i, j + 1)) { //往右走
+          return true
+        } else if (recursion(map, i - 1, j)) {//往上走
+          return true
+        } else if (recursion(map, i, j - 1)) { //往左走
+          return true
+        } else {
+          //走不通，改为3
+          map[i][j] = 3
+        }
+      } else {
+        return false
+      }
+
+    }
+  }
+
+  function createMap() {
+    //这种方式创建的数组有问题，在执行fill时候接受的new Array(7) 数组的地址已经创建好了，
+    //相当于fill(0x111) 将所有的行都替换成这个数组了
+    // const arr = new Array(8).fill(new Array(7))
+
+
+    const arr = Array(8).fill(0).map(x => Array(7).fill(0))
+    //将第一行和最后一行改为1 （墙）
+    for (let i = 0; i < 7; i++) {
+      arr[0][i] = 1
+      arr[7][i] = 1
+    }
+
+    // //将第一列和最后一列改为1 （墙）
+    for (let i = 0; i < 7; i++) {
+      arr[i][0] = 1
+      arr[i][6] = 1
+    }
+
+    arr[3][1] = 1
+    arr[3][2] = 1
+
+    // arr[1][2] = 1
+    // arr[2][2] = 1
+    // logMap(arr)
+    return arr
+  }
+
+  function logMap(arr) {
+    for (let i = 0; i < arr.length; i++) {
+      let str = ''
+      for (let j = 0; j < arr[i].length; j++) {
+        str += arr[i][j] + '  '
+      }
+      console.log(str);
+    }
+  }
+
+  const map = createMap()
+
+  console.log('map', map);
+  recursion(map, 1, 1) //从1 1 开始走
+</script>
+
+</html>
