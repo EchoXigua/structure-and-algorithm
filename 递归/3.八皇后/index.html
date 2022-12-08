@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./index.js"></script>
+</head>
+
+<body>
+
+</body>
+<script>
+  /**
+   *  八皇后不能放在同一行，同一列，斜线
+   * 
+   * 思路： 
+   *  1. 第一个皇后放第一行第一列
+   *  2. 第二个皇后放第二行第一列，然后判断是否冲突，冲突的放第二列、第三列...
+   *  3. 继续第三个皇后，还是第一列...知恶道第8个皇后也能放在不冲突的位置
+   *     找到一个正确解
+   *  4. 得到正确解后，在栈回退到上一个栈时，就会开始回溯。即第一个皇后放第一列的
+   *     所有正确解得到
+   *  5. 在将第一个皇后放置第二列，重复上面的步骤
+   * 
+   *  这个地方的解题思路 和八个for嵌套很相似
+   * 
+   *
+   * 这个地方可以不用做二维数组，假如得到的数组是这样的
+   * arr = [1,2,3,4,5,6,7,8] （错误的，为了讲解为什么一维数组就可以解决）
+   *  arr[0] 这就是第一行  arr[0] 2 他的值1  就是第1列
+   *  arr[1] 第二行  arr[1] 2  值为2  第2列
+   *  数组角标就是行，对应的值就是列
+   */
+
+  const queue8 = new Queue8()
+  queue8.check(0)
+  console.log(`一共有${queue8.count}解法`);
+  console.log(`一共进行了${queue8.query}次判断`);
+
+</script>
+
+</html>
